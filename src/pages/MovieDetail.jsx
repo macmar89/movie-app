@@ -19,7 +19,10 @@ function MovieDetail({ match }) {
 
   const addRemoveFromFavorite = () => {
     setIsFavorite(!isFavorite);
-    if (isFavorite === true) setTestFavorite(...favorite, details);
+    if (!isFavorite) {
+      const newFavorites = [{ ...favorite, details }];
+      setFavorite(newFavorites);
+    }
   };
 
   useEffect(() => {
