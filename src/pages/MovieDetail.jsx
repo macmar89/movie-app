@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { BsStar, BsStarFill } from "react-icons/bs";
 
 //  helpers
-import { timeConvert } from "../global/helpers/TimeFormat";
+import { timeConvert, shorten } from "../global/helpers/Format";
 import { useLocalStorage } from "../global/helpers/useLocalStorage";
 
 //  components
@@ -14,7 +14,6 @@ function MovieDetail({ match }) {
   const [details, setDetails] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [testFavorite, setTestFavorite] = useState([]);
   const [favorite, setFavorite] = useLocalStorage("favorites", []);
 
   const addRemoveFromFavorite = () => {
@@ -23,13 +22,29 @@ function MovieDetail({ match }) {
       const newFavorites = [...favorite, details];
       setFavorite(newFavorites);
     }
+    if (isFavorite) {
+      // const removeFavorite = window.confirm("Are you sure?");
+      // if (!removeFavorite) return;
+      // if (removeFavorite) {
+      const newFavorites = favorite.filter(movie => movie.imdbID !== id);
+      setFavorite(newFavorites);
+      // }
+    }
+  };
+
+  //  skontroluje ci je film ulozeny v localStorage
+  const checkIfFavorite = () => {
+    const movie = favorite.filter(movie => movie.imdbID === id);
+    if (movie.length > 0) setIsFavorite(true);
   };
 
   useEffect(() => {
     setIsLoading(true);
     fetchOneMovie(id, setDetails);
+    checkIfFavorite();
     setIsLoading(false);
-  }, [details]);
+  }, [id, isFavorite]);
+
   if (isLoading) return <div>Is loading...</div>;
 
   return (
@@ -37,7 +52,7 @@ function MovieDetail({ match }) {
       <header className="row my-3">
         <main className="col-12 col-md-8 d-flex flex-column">
           <h2 className="text-uppercase text-center text-md-start">
-            {details.Title}
+            {shorten(details.Title)}
           </h2>
           <div className="d-flex justify-content-center justify-content-md-start">
             <span>{details.Released}</span>&nbsp;&ndash;&nbsp;
@@ -46,6 +61,7 @@ function MovieDetail({ match }) {
         </main>
         <aside className="col-12 col-md-4 d-flex flex-row-reverse justify-content-center align-items-center">
           <div className=" mx-3 d-flex flex-column ">
+            {/* {checkIfFavorite()} */}
             {isFavorite ? (
               <BsStarFill
                 onClick={addRemoveFromFavorite}
@@ -77,6 +93,10 @@ function MovieDetail({ match }) {
           <table className="table ">
             <tbody>
               <tr>
+                <td>Title</td>
+                <th>{details.Title}</th>
+              </tr>
+              <tr>
                 <td>Genre</td>
                 <th>{details.Genre}</th>
               </tr>
@@ -107,12 +127,6 @@ function MovieDetail({ match }) {
       <div className="text-center my-4">
         <Button label={"Show More Details"} click={() => alert("buu")} />
       </div>
-      <button
-        onClick={() => console.log(testFavorite)}
-        className="btn btn-success"
-      >
-        show
-      </button>
     </div>
   );
 }

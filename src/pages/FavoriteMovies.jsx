@@ -18,6 +18,15 @@ const FavoriteMovies = () => {
 
   return (
     <div>
+      <h2 className="my-2 text-center">Favorites Movies</h2>
+
+      <table>
+        <tr>
+          <th>Title</th>
+          <th></th>
+        </tr>
+      </table>
+
       {favorites.map(movie => (
         <div className="d-flex">
           <p>{movie.Title}</p>

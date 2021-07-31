@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const MoviesTable = ({ movies }) => {
-  console.log("movies table");
   if (movies === "undefined") return <div></div>;
 
   if (movies !== "undefined")
