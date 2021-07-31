@@ -1,6 +1,5 @@
 import { fetchOneMovie } from "../global/helpers/FetchMovieDetail";
 import { useState, useEffect } from "react";
-import { BsStar, BsStarFill } from "react-icons/bs";
 
 //  helpers
 import { timeConvert, shorten } from "../global/helpers/Format";
@@ -8,6 +7,8 @@ import { useLocalStorage } from "../global/helpers/useLocalStorage";
 
 //  components
 import Button from "../global/components/Button";
+import FavoriteStar from "../global/components/FavoriteStar";
+import FavoriteStarFull from "../global/components/FavoriteStarFull";
 
 function MovieDetail({ match }) {
   const id = match.params.id;
@@ -23,16 +24,13 @@ function MovieDetail({ match }) {
       setFavorite(newFavorites);
     }
     if (isFavorite) {
-      // const removeFavorite = window.confirm("Are you sure?");
-      // if (!removeFavorite) return;
-      // if (removeFavorite) {
       const newFavorites = favorite.filter(movie => movie.imdbID !== id);
       setFavorite(newFavorites);
       // }
     }
   };
 
-  //  skontroluje ci je film ulozeny v localStorage
+  //  skontroluje ci je film ulozeny v localStorage medzi oblubenymi
   const checkIfFavorite = () => {
     const movie = favorite.filter(movie => movie.imdbID === id);
     if (movie.length > 0) setIsFavorite(true);
@@ -49,8 +47,8 @@ function MovieDetail({ match }) {
 
   return (
     <div>
-      <header className="row my-3">
-        <main className="col-12 col-md-8 d-flex flex-column">
+      <header className="row py-4 px-1 shadow-lg rounded">
+        <main className="col-12 col-md-8 d-flex flex-column ">
           <h2 className="text-uppercase text-center text-md-start">
             {shorten(details.Title)}
           </h2>
@@ -64,14 +62,13 @@ function MovieDetail({ match }) {
             className=" mx-3 d-flex flex-column "
             style={{ cursor: "pointer" }}
           >
-            {/* {checkIfFavorite()} */}
             {isFavorite ? (
-              <BsStarFill
+              <FavoriteStarFull
                 onClick={addRemoveFromFavorite}
                 style={{ color: "yellow", fontSize: 40 }}
               />
             ) : (
-              <BsStar
+              <FavoriteStar
                 onClick={addRemoveFromFavorite}
                 style={{ color: "yellow", fontSize: 40 }}
               />
@@ -93,7 +90,7 @@ function MovieDetail({ match }) {
           </div>
         </aside>
       </header>
-      <div className="row">
+      <div className="row  py-4 px-1">
         <div className="col-12 col-md-8">
           <table className="table ">
             <tbody>
@@ -123,14 +120,17 @@ function MovieDetail({ match }) {
               </tr>
             </tbody>
           </table>
-          <p className="px-3 py-1">{details.Plot}</p>
+          <p className="px-3 py-1 overflow-auto">{details.Plot}</p>
         </div>
         <div className="col-12 order-first order-md-last col-md-4 mb-4 mb-md-0 d-flex justify-content-center">
           <img src={details.Poster} alt={`${details.Poster} poster`} />
         </div>
       </div>
       <div className="text-center my-4">
-        <Button label={"Show More Details"} click={() => alert("buu")} />
+        <Button
+          label={"Show More Details"}
+          click={() => console.log(details)}
+        />
       </div>
     </div>
   );

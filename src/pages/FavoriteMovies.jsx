@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useLocalStorage } from "../global/helpers/useLocalStorage";
-import { BsStarFill } from "react-icons/bs";
+
+//  components
+import FavoriteStarFull from "../global/components/FavoriteStarFull";
 import MovieCard from "../components/SearchMovies/MovieCard";
 import Pagination from "../global/components/Pagination";
 
@@ -15,16 +17,17 @@ const FavoriteMovies = () => {
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
-  //  ozajstne data z db
+  //
   let currentMovies = favorites.slice(indexOfFirstPost, indexOfLastPost);
 
   const handleSubmit = id => {
     currentMovies = id;
-    console.log(id);
   };
 
   const remove = id => {
-    const removeFavorite = window.confirm("Are you sure?");
+    const removeFavorite = window.confirm(
+      "Remove from favorites. Are you sure?"
+    );
     if (!removeFavorite) return;
     if (removeFavorite) {
       const newFavorites = favorites.filter(movie => movie.imdbID !== id);
@@ -40,7 +43,7 @@ const FavoriteMovies = () => {
           <div className="col-12 col-md-6 position-relative">
             <MovieCard data={movie} />
             <aside>
-              <BsStarFill
+              <FavoriteStarFull
                 onClick={() => remove(movie.imdbID)}
                 className="position-absolute"
                 style={{
@@ -51,6 +54,20 @@ const FavoriteMovies = () => {
                   right: "3rem",
                 }}
               />
+              {/* <BsStarFill
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Add/remove from favorites"
+                onClick={() => remove(movie.imdbID)}
+                className="position-absolute"
+                style={{
+                  fontSize: "2rem",
+                  color: "yellow",
+                  zIndex: "50",
+                  top: "2rem",
+                  right: "3rem",
+                }}
+              /> */}
             </aside>
           </div>
         ))}

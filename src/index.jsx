@@ -7,10 +7,20 @@ import { BrowserRouter as Router } from "react-router-dom";
 // import "./styles/_bootswatch.scss";
 import "./styles/bootstrap.min.css";
 import "./styles/_variables.scss";
+import popcorn from "./images/popcorn.png";
 
 ReactDOM.render(
   <Router>
-    <App />
+    <div className="position-relative">
+      <img
+        className="position-fixed"
+        src={popcorn}
+        alt={popcorn}
+        style={{ top: 450, right: 20, zIndex: "-10" }}
+      />
+
+      <App />
+    </div>
   </Router>,
   document.getElementById("root")
 );
