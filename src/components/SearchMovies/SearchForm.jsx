@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 
 const SearchForm = ({ setMovies }) => {
   const searchInput = useRef(null);
+  const [movie, setMovie] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -19,7 +20,8 @@ const SearchForm = ({ setMovies }) => {
           <input
             className="form-control"
             ref={searchInput}
-            onChange={handleInput}
+            onChange={e => setMovie(e.target.value)}
+            value={movie}
             type="text"
             placeholder="search for movie"
           />

@@ -5,7 +5,6 @@ import { Switch, Route } from "react-router-dom";
 import FavoriteMovies from "./pages/FavoriteMovies";
 import MovieDetail from "./pages/MovieDetail";
 import SearchMovies from "./pages/SearchMovies";
-import { NavLink } from "react-bootstrap";
 import Header from "./components/global/Header";
 
 function App() {

@@ -33,7 +33,6 @@ const MovieSearch = () => {
           />
         </div>
       )}
-      {currentPage}
     </div>
   );
 };

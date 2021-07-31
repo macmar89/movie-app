@@ -24,6 +24,14 @@ const Pagination = ({
     setCurrentPage(num);
     setMinPageNumberLimit(num - 3);
     setMaxPageNumberLimit(num + 2);
+    if (num === 1 || num === 2) {
+      setMinPageNumberLimit(0);
+      setMaxPageNumberLimit(5);
+    }
+    if (num === pageCount || num === pageCount - 1) {
+      setMinPageNumberLimit(pageCount - 5);
+      setMaxPageNumberLimit(pageCount);
+    }
     await fetchMovies(movie);
   };
 
@@ -34,7 +42,7 @@ const Pagination = ({
           key={number}
           id={number}
           onClick={() => handleClick(number)}
-          className="page-item"
+          className={`page-item ${currentPage === number ? "active" : ""}`}
         >
           <span className="page-link">{number}</span>
         </li>
@@ -66,7 +74,7 @@ const Pagination = ({
             if (currentPage > 1) handleClick(currentPage - 1);
           }}
         >
-          <span class="page-link">Previous</span>
+          <span className="page-link">Previous</span>
         </li>
         {renderPageNumbers}
         <li
@@ -75,7 +83,7 @@ const Pagination = ({
             if (currentPage < pageCount) handleClick(currentPage + 1);
           }}
         >
-          <span class="page-link">Next</span>
+          <span className="page-link">Next</span>
         </li>
       </nav>
     </div>

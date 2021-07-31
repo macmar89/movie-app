@@ -14,6 +14,7 @@ const Header = ({ title }) => {
           alt="popcorn"
         />
       </div>
+
       <NavMenu />
     </div>
   );
