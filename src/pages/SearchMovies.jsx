@@ -14,10 +14,7 @@ const MovieSearch = () => {
   //  stiahne data z db
   const handleSubmit = async movie => {
     setIsLoading(true);
-
     setMovie(movie);
-    console.log(movie);
-    console.log(currentPage);
     await fetchMovies(movie, setMovies, currentPage);
     setIsLoading(false);
   };

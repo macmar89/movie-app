@@ -1,14 +1,12 @@
 import React from "react";
 import MovieCard from "./MovieCard";
-import { NavLink } from "react-router-dom";
-import Pagination from "../../global/components/Pagination";
 
 const MoviesTable = ({ movies }) => {
   return (
     <div className="row my-4">
       {movies &&
         movies.Search.map(movie => (
-          <arcicle className="col-12 col-md-3">
+          <arcicle className="col-12 col-md-6">
             <MovieCard data={movie} />
           </arcicle>
         ))}
