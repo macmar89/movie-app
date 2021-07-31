@@ -1,11 +1,26 @@
 import React from "react";
+import { useLocalStorage } from "../global/helpers/useLocalStorage";
 
 const FavoriteMovies = () => {
-  const favorites = JSON.parse(localStorage.getItem("favorite"));
+  const [favorites, setFavorites] = useLocalStorage(
+    "favorites",
+    JSON.parse(localStorage.getItem("favorite"))
+  );
+
+  const remove = id => {
+    const newFavorites = favorites.filter(movie => movie.imdbID !== id);
+    setFavorites(newFavorites);
+  };
+
   return (
     <div>
       {favorites.map(movie => (
-        <p>{movie.Title}</p>
+        <div className="d-flex">
+          <p>{movie.Title}</p>
+          <span onClick={() => remove(movie.imdbID)} className="ms-3">
+            remove from Favorites
+          </span>
+        </div>
       ))}
     </div>
   );
