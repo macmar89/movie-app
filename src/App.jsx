@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { Switch, Route } from "react-router-dom";
 
 //  pages
@@ -6,17 +6,20 @@ import FavoriteMovies from "./pages/FavoriteMovies";
 import MovieDetail from "./pages/MovieDetail";
 import SearchMovies from "./pages/SearchMovies";
 import { NavLink } from "react-bootstrap";
+import Header from "./components/global/Header";
 
 function App() {
   return (
-    <div className="App container my-5">
-      <h1>Movie App</h1>
-      <Switch>
-        <Route path={"/"} exact component={SearchMovies} />
-        <Route path={"/search"} exact component={SearchMovies} />
-        <Route path={"/movie/:id"} component={MovieDetail} />
-        <Route path={"/favorites"} component={FavoriteMovies}></Route>
-      </Switch>
+    <div className="App">
+      <Header title="Movie App" />
+      <main className="container">
+        <Switch>
+          <Route path={"/"} exact component={SearchMovies} />
+          <Route path={"/search"} exact component={SearchMovies} />
+          <Route path={"/movie/:id"} component={MovieDetail} />
+          <Route path={"/favorites"} component={FavoriteMovies}></Route>
+        </Switch>
+      </main>
     </div>
   );
 }
