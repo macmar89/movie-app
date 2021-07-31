@@ -10,10 +10,17 @@ import SearchMovies from "./pages/SearchMovies";
 import MainHeader from "./components/global/MainHeader";
 import NavMenu from "./components/global/NavMenu";
 import { MovieProvider } from "./global/helpers/MovieContext";
+import board from "./images/board-player.png";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App position-relative">
+      <img
+        className="position-fixed"
+        src={board}
+        alt={board}
+        style={{ top: "20%", right: "5%", zIndex: "-10", opacity: 0.35 }}
+      />
       <MainHeader title="Movie App" />
       <NavMenu />
       <main className="container mt-3 mt-md-5">
