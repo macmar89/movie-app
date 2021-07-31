@@ -60,7 +60,10 @@ function MovieDetail({ match }) {
           </div>
         </main>
         <aside className="col-12 col-md-4 d-flex flex-row-reverse justify-content-center align-items-center">
-          <div className=" mx-3 d-flex flex-column ">
+          <div
+            className=" mx-3 d-flex flex-column "
+            style={{ cursor: "pointer" }}
+          >
             {/* {checkIfFavorite()} */}
             {isFavorite ? (
               <BsStarFill
@@ -77,7 +80,9 @@ function MovieDetail({ match }) {
           <div className="my-2 mx-3 d-flex flex-column ">
             <span>IMDb Rating </span>
             <span className="px-2 py-1 mt-2 text-center border border-1 rounded-pill">
-              {details.imdbRating} / 10
+              {details.imdbRating === "N/A"
+                ? "N/A"
+                : `${details.imdbRating} / 10`}
             </span>
           </div>
           <div className="my-2 mx-3 d-flex flex-column items-align-center">

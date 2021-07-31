@@ -13,3 +13,5 @@ export const timeConvert = n => {
 export const shorten = (str, len = 30) => {
   return _.truncate(str, { length: len });
 };
+
+export const year = year => {};

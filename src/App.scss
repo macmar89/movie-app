@@ -4,3 +4,10 @@
     height: 9rem;
   }
 }
+.movie-card {
+  background-color: pink;
+  .movie-card-img {
+    height: "60%";
+    object-fit: "cover";
+  }
+}

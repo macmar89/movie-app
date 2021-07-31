@@ -33,9 +33,18 @@ const NavMenu = () => {
               </NavLink>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="#">
+              <NavLink class="nav-link text-light" aria-current="page" to="/">
                 Link
-              </a>
+              </NavLink>
+            </li>
+            <li class="nav-item">
+              <NavLink
+                class="nav-link text-light"
+                aria-current="page"
+                to="/favorites"
+              >
+                Favorites
+              </NavLink>
             </li>
           </ul>
           <SearchForm />

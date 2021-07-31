@@ -7,31 +7,35 @@ import { fetchMovies } from "../global/helpers/FetchMovies";
 
 const MovieSearch = () => {
   const [movie, setMovie] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [isMovies, setIsMovies] = useState(false);
+  const [movies, setMovies] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   //  stiahne data z db
   const handleSubmit = async movie => {
+    setIsLoading(true);
+
     setMovie(movie);
+    console.log(movie);
+    console.log(currentPage);
     await fetchMovies(movie, setMovies, currentPage);
-    setIsMovies(true);
+    setIsLoading(false);
   };
+
+  if (isLoading) return <div>loading</div>;
 
   return (
     <div className="">
       <SearchForm setMovies={handleSubmit} />
-      {isMovies === true && (
-        <div>
-          <MoviesTable movies={movies} />
-          <Pagination
-            fetchMovies={handleSubmit}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            movie={movie}
-            pageCount={Math.ceil(movies.totalResults / 10)}
-          />
-        </div>
+      {movies && <MoviesTable movies={movies} />}
+      {movies && (
+        <Pagination
+          fetchMovies={handleSubmit}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          movie={movie}
+          pageCount={Math.ceil(movies.totalResults / 10)}
+        />
       )}
     </div>
   );

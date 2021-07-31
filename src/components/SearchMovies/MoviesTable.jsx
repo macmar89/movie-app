@@ -1,12 +1,19 @@
 import React from "react";
+import MovieCard from "./MovieCard";
 import { NavLink } from "react-router-dom";
+import Pagination from "../../global/components/Pagination";
 
 const MoviesTable = ({ movies }) => {
-  if (movies === "undefined") return <div></div>;
+  return (
+    <div className="row my-4">
+      {movies &&
+        movies.Search.map(movie => (
+          <arcicle className="col-12 col-md-3">
+            <MovieCard data={movie} />
+          </arcicle>
+        ))}
 
-  if (movies !== "undefined")
-    return (
-      <table className="table table-hover table-striped my-5">
+      {/* <table className="table table-hover table-striped my-5">
         <thead>
           <tr>
             <td>Title</td>
@@ -27,8 +34,9 @@ const MoviesTable = ({ movies }) => {
             </tr>
           ))}
         </tbody>
-      </table>
-    );
+      </table> */}
+    </div>
+  );
 };
 
 export default MoviesTable;
