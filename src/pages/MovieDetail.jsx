@@ -15,7 +15,7 @@ function MovieDetail({ match }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [testFavorite, setTestFavorite] = useState([]);
-  const [favorite, setFavorite] = useLocalStorage("favorite", []);
+  const [favorite, setFavorite] = useLocalStorage("favorites", []);
 
   const addRemoveFromFavorite = () => {
     setIsFavorite(!isFavorite);

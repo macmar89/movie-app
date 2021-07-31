@@ -8,8 +8,12 @@ const FavoriteMovies = () => {
   );
 
   const remove = id => {
-    const newFavorites = favorites.filter(movie => movie.imdbID !== id);
-    setFavorites(newFavorites);
+    const removeFavorite = window.confirm("Are you sure?");
+    if (!removeFavorite) return;
+    if (removeFavorite) {
+      const newFavorites = favorites.filter(movie => movie.imdbID !== id);
+      setFavorites(newFavorites);
+    }
   };
 
   return (
