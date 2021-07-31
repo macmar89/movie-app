@@ -2,7 +2,7 @@ import { useState } from "react";
 import MoviesTable from "../components/SearchMovies/MoviesTable";
 import SearchForm from "../components/SearchMovies/SearchForm";
 
-import { fetchMovies } from "../helpers/global/FetchMovies";
+import { fetchMovies } from "../global/helpers/FetchMovies";
 
 const MovieSearch = () => {
   const [movies, setMovies] = useState([]);

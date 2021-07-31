@@ -24,7 +24,7 @@ const MoviesTable = ({ movies }) => {
               <td>
                 <NavLink to={`/movie/${movie.imdbID}`}>info</NavLink>
               </td>
-              <td>{movie.Year}</td>
+              <td>{movie.Type}</td>
             </tr>
           ))}
         </tbody>

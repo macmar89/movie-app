@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "./styles/_bootswatch.scss";
 import "./styles/bootstrap.min.css";
+import "./styles/_variables.scss";
 
 ReactDOM.render(
   <Router>

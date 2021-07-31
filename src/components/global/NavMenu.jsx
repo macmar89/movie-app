@@ -5,9 +5,9 @@ const NavMenu = () => {
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
       <div class="container">
-        <a class="navbar-brand" to="/">
+        <NavLink class="navbar-brand" to="/">
           Menu
-        </a>
+        </NavLink>
         <button
           class="navbar-toggler"
           type="button"
