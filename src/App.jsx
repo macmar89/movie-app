@@ -5,7 +5,10 @@ import { Switch, Route } from "react-router-dom";
 import FavoriteMovies from "./pages/FavoriteMovies";
 import MovieDetail from "./pages/MovieDetail";
 import SearchMovies from "./pages/SearchMovies";
+
+//  components
 import Header from "./components/global/Header";
+import { MovieProvider } from "./global/helpers/MovieContext";
 
 function App() {
   return (

@@ -16,7 +16,12 @@ const FavoriteMovies = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
   //  ozajstne data z db
-  const currentMovies = favorites.slice(indexOfFirstPost, indexOfLastPost);
+  let currentMovies = favorites.slice(indexOfFirstPost, indexOfLastPost);
+
+  const handleSubmit = id => {
+    currentMovies = id;
+    console.log(id);
+  };
 
   const remove = id => {
     const removeFavorite = window.confirm("Are you sure?");
@@ -31,7 +36,7 @@ const FavoriteMovies = () => {
     <div>
       <h2 className="my-2 text-center">Favorites Movies</h2>
       <div className="row">
-        {favorites.map(movie => (
+        {currentMovies.map(movie => (
           <div className="col-12 col-md-6 position-relative">
             <MovieCard data={movie} />
             <aside>
@@ -51,15 +56,15 @@ const FavoriteMovies = () => {
         ))}
       </div>
 
-      {/* {favorites.length > 10 && (
+      {favorites.length > 10 && (
         <Pagination
           fetchMovies={handleSubmit}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           movie={currentMovies}
-          pageCount={Math.ceil(favorites.totalResults / 10)}
+          pageCount={Math.ceil(favorites.length / 10)}
         />
-      )} */}
+      )}
     </div>
   );
 };
