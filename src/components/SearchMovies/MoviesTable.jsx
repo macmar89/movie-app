@@ -6,9 +6,9 @@ const MoviesTable = ({ movies }) => {
     <div className="row my-4">
       {movies &&
         movies.Search.map(movie => (
-          <arcicle className="col-12 col-md-6">
+          <div className="col-12 col-md-6">
             <MovieCard data={movie} />
-          </arcicle>
+          </div>
         ))}
 
       {/* <table className="table table-hover table-striped my-5">

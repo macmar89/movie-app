@@ -2,8 +2,9 @@ import { useState } from "react";
 import Pagination from "../global/components/Pagination";
 import MoviesTable from "../components/SearchMovies/MoviesTable";
 import SearchForm from "../components/SearchMovies/SearchForm";
+import Loading from "../global/components/Loading";
 
-import { fetchMovies } from "../global/helpers/FetchMovies";
+import axios from "axios";
 
 const MovieSearch = () => {
   const [movie, setMovie] = useState("");
@@ -15,24 +16,41 @@ const MovieSearch = () => {
   const handleSubmit = async movie => {
     setIsLoading(true);
     setMovie(movie);
-    await fetchMovies(movie, setMovies, currentPage);
-    setIsLoading(false);
+    await axios
+      .get(
+        `http://www.omdbapi.com/?apikey=48fdc589&s=${movie}&page=${currentPage}`
+      )
+      .then(res => {
+        if (res.data.Response) {
+          setMovies(res.data);
+        }
+        setIsLoading(false);
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+    console.log(
+      `http://www.omdbapi.com/?apikey=48fdc589&s=${movie}&page=${currentPage}`
+    );
   };
 
-  if (isLoading) return <div>loading</div>;
-
   return (
-    <div className="">
+    <div>
       <SearchForm setMovies={handleSubmit} />
-      {movies && <MoviesTable movies={movies} />}
-      {movies && (
-        <Pagination
-          fetchMovies={handleSubmit}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          movie={movie}
-          pageCount={Math.ceil(movies.totalResults / 10)}
-        />
+      {!isLoading ? (
+        <div>
+          <MoviesTable movies={movies} />
+          {movies && Math.ceil(movies.totalResults / 10) > 1 && (
+            <Pagination
+              fetchMovies={handleSubmit}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              movie={movie}
+              pageCount={Math.ceil(movies.totalResults / 10)}
+            />
+          )}
+        </div>
+      ) : (
+        <Loading />
       )}
     </div>
   );

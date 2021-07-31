@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 
-const Pagination = ({
-  fetchMovies,
-  currentPage,
-  setCurrentPage,
-  pageCount,
-  movie,
-}) => {
-  const [pageNumberLimit] = useState(10);
+const Pagination = props => {
+  const { fetchMovies, currentPage, setCurrentPage, pageCount, movie } = props;
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
@@ -18,9 +12,7 @@ const Pagination = ({
   }
 
   //  posle do SearchMovies.jsx cislo ktorej stranky ma nacitat
-  const handleClick = async num => {
-    // setCurrentPage(e.target.id);
-
+  const handleClick = num => {
     setCurrentPage(num);
     setMinPageNumberLimit(num - 3);
     setMaxPageNumberLimit(num + 2);
@@ -32,7 +24,7 @@ const Pagination = ({
       setMinPageNumberLimit(pageCount - 5);
       setMaxPageNumberLimit(pageCount);
     }
-    await fetchMovies(movie);
+    fetchMovies(movie);
   };
 
   const renderPageNumbers = numberOfPages.map(number => {
@@ -52,21 +44,8 @@ const Pagination = ({
     }
   });
 
-  const firstPageClick = () => {
-    setCurrentPage(1);
-    setMinPageNumberLimit(0);
-    setMaxPageNumberLimit(pageNumberLimit);
-  };
-
-  const lastPageClick = () => {
-    setCurrentPage(pageCount);
-    const max = Math.ceil(pageCount / pageNumberLimit) * pageNumberLimit;
-    setMaxPageNumberLimit(max);
-    setMinPageNumberLimit(max - pageNumberLimit - 1);
-  };
-
   return (
-    <div className="d-flex justify-content-end">
+    <div className="d-flex mb-4 justify-content-center justify-content-lg-end">
       <nav className="pagination">
         <li
           className={`page-item ${currentPage === 1 ? "disabled" : ""}`}

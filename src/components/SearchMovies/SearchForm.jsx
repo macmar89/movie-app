@@ -14,24 +14,23 @@ const SearchForm = ({ setMovies }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="">
-      <div className="row">
-        <div className="col-8">
-          <input
-            className="form-control"
-            ref={searchInput}
-            onChange={e => setMovie(e.target.value)}
-            value={movie}
-            type="text"
-            placeholder="search for movie"
-          />
-        </div>
-        <div className="col-4">
-          <button className="btn btn-dark btn-block" type="submit">
-            Search
-          </button>
-        </div>
+    <form onSubmit={handleSubmit} className="row ">
+      <div className="col-12 col-md-8">
+        <input
+          className="form-control"
+          ref={searchInput}
+          onChange={e => setMovie(e.target.value)}
+          value={movie}
+          type="text"
+          placeholder="search for movie"
+        />
       </div>
+      <button
+        className="d-none d-md-block col-md-4 mt-md-0 btn btn-outline-success btn-block"
+        type="submit"
+      >
+        Search
+      </button>
     </form>
   );
 };
