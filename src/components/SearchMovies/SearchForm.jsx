@@ -25,10 +25,7 @@ const SearchForm = ({ fetch }) => {
         />
       </div>
       <div className="col-12 col-md-4 mx-auto mt-2 mt-md-0 ">
-        <Button
-          label={"Search"}
-          className="btn-outline-success btn-block col-12"
-        />
+        <Button label={"Search"} className="btn-success btn-block col-12" />
       </div>
     </form>
   );

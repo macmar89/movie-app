@@ -5,14 +5,20 @@ body {
   h1 {
     font-family: "Palette Mosaic", cursive;
   }
+  h2,
   h3,
   h4,
   h5,
   h6,
   p,
   a,
-  span {
+  span,
+  td,
+  th,
+  button,
+  strong {
     font-family: "Bai Jamjuree", sans-serif;
+    color: darken(white, 15%);
   }
   h1 {
     text-transform: uppercase;
@@ -20,6 +26,11 @@ body {
     letter-spacing: 5px;
     font-size: 5rem;
     font-weight: 400;
+    color: darken(white, 10%);
+    text-shadow: 1px 1px 5px darken(white, 30%);
+  }
+  h2 {
+    text-shadow: 1px 1px 20px inherit;
   }
   a {
     text-decoration: none;

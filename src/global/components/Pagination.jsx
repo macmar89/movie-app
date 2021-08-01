@@ -38,7 +38,7 @@ const Pagination = props => {
           onClick={() => handleClick(number)}
           className={`page-item ${currentPage === number ? "active" : ""}`}
         >
-          <span className="page-link">{number}</span>
+          <span className="page-link ">{number}</span>
         </li>
       );
     } else {
@@ -48,14 +48,14 @@ const Pagination = props => {
 
   return (
     <div className="d-flex mb-4 justify-content-center justify-content-lg-end">
-      <nav className="pagination">
+      <nav className="pagination ">
         <li
-          className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+          className={`page-item  ${currentPage === 1 ? "disabled" : ""}`}
           onClick={() => {
             if (currentPage > 1) handleClick(currentPage - 1);
           }}
         >
-          <span className="page-link">Previous</span>
+          <span className="page-link ">Previous</span>
         </li>
         {renderPageNumbers}
         <li
@@ -64,7 +64,7 @@ const Pagination = props => {
             if (currentPage < pageCount) handleClick(currentPage + 1);
           }}
         >
-          <span className="page-link">Next</span>
+          <span className="page-link ">Next</span>
         </li>
       </nav>
     </div>
