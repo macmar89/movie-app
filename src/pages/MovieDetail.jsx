@@ -61,7 +61,7 @@ function MovieDetail({ match }) {
   return (
     <div>
       <header className="row py-4 px-1 shadow-lg rounded">
-        <main className="col-12 col-md-8 d-flex flex-column ">
+        <main className="col-12 col-lg-8 d-flex flex-column ">
           <h2 className="text-uppercase text-center text-md-start">
             {shorten(details.Title, 35)}
           </h2>
@@ -70,7 +70,7 @@ function MovieDetail({ match }) {
             <small>{timeConvert(details.Runtime)}</small>
           </div>
         </main>
-        <aside className="col-12 col-md-4 d-flex flex-row-reverse justify-content-center align-items-center">
+        <aside className="col-12 col-lg-4 d-flex flex-row-reverse justify-content-start justify-content-lg-center align-items-center">
           <div
             className=" mx-3 d-flex flex-column "
             style={{ cursor: "pointer" }}
@@ -88,7 +88,7 @@ function MovieDetail({ match }) {
             )}
           </div>
           <div className="my-2 mx-3 d-flex flex-column  ">
-            <span>IMDb Rating </span>
+            <span>IMDb&nbsp;Rating </span>
             <strong className="px-2 py-1 mt-2 text-center border border-1 rounded-pill text-warning border-warning">
               {details.imdbRating === "N/A"
                 ? "N/A"

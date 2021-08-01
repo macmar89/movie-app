@@ -10,6 +10,9 @@
   .left-image {
     left: 10%;
   }
+  .right-image {
+    right: 10%;
+  }
 }
 .movie-card {
   background-color: pink;
@@ -57,7 +60,7 @@
   }
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 768px) {
   .image-board {
     position: fixed;
     height: 80%;
@@ -68,18 +71,35 @@
   }
   .header {
     h1 {
-      font-size: 3.8rem;
+      font-size: 2.8rem;
     }
     img {
       width: 7rem;
       height: 7rem;
-      opacity: 0.6;
     }
     .left-image {
       left: 0;
     }
     .right-image {
       right: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .header {
+    h1 {
+      font-size: 4.5rem;
+    }
+    img {
+      width: 7rem;
+      height: 7rem;
+    }
+    .left-image {
+      left: 4%;
+    }
+    .right-image {
+      right: 4%;
     }
   }
 }
