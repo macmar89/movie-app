@@ -104,7 +104,6 @@ const Pagination = props => {
 
   return (
     <div className="d-flex mb-4 justify-content-center justify-content-lg-end">
-      {currentPage} / {pageCount}
       <nav className="pagination ">
         <li
           className={`page-item cursor-pointer  ${
@@ -124,14 +123,6 @@ const Pagination = props => {
           <span className="page-link ">Next</span>
         </li>
       </nav>
-      <button
-        onClick={() => {
-          setMinPageNumberLimit(5);
-          setMaxPageNumberLimit(10);
-        }}
-      >
-        tuk
-      </button>
     </div>
   );
 };
