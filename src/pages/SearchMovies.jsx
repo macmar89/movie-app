@@ -44,7 +44,6 @@ const MovieSearch = () => {
   return (
     <div className>
       <Header title="Search" />
-      {movie}
       <SearchForm fetch={fetchMovies} />
       {!isLoading ? (
         <div>

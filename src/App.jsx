@@ -7,8 +7,8 @@ import MovieDetail from "./pages/MovieDetail";
 import SearchMovies from "./pages/SearchMovies";
 
 //  components
-import MainHeader from "./components/global/MainHeader";
-import NavMenu from "./components/global/NavMenu";
+import MainHeader from "./global/components/MainHeader";
+import NavMenu from "./global/components/NavMenu";
 import board from "./images/board-player.png";
 
 function App() {
