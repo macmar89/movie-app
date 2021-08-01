@@ -10,12 +10,20 @@ import Pagination from "../global/components/Pagination";
 import { useLocalStorage } from "../global/helpers/useLocalStorage";
 
 const FavoriteMovies = () => {
+  // const localFavorites = JSON.parse(localStorage.getItem("favorite"));
+
   const [favorites, setFavorites] = useLocalStorage(
     "favorites",
-    JSON.parse(localStorage.getItem("favorite"))
+    JSON.parse(localStorage.getItem("favorite")) !== null
+      ? JSON.parse(localStorage.getItem("favorite"))
+      : []
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
+
+  // if (localFavorites !== null) {
+  //   setFavorites(localFavorites);
+  // }
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -25,6 +33,7 @@ const FavoriteMovies = () => {
 
   //  nastavi movie, ktore sa zobrazia
   const handleSubmit = id => {
+    console.log(id);
     currentMovies = id;
   };
 

@@ -39,10 +39,10 @@ function MovieDetail({ match }) {
     if (movie.length > 0) setIsFavorite(true);
   };
 
-  const fetchMovieDetails = async title => {
+  const fetchMovieDetails = async id => {
     setIsLoading(true);
     await axios
-      .get(`http://www.omdbapi.com/?apikey=48fdc589&i=${title}&plot=full`)
+      .get(`http://www.omdbapi.com/?apikey=48fdc589&i=${id}&plot=full`)
       .then(res => {
         setDetails(res.data);
         checkIfFavorite();
