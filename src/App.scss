@@ -26,3 +26,22 @@
 .image-sorry {
   height: 15rem;
 }
+
+.image-board {
+  position: fixed;
+  top: 20%;
+  right: 5%;
+  z-index: -10;
+  opacity: 0.05;
+}
+
+@media only screen and (max-width: 600px) {
+  .image-board {
+    position: fixed;
+    height: 80%;
+    top: 40%;
+    left: 0%;
+    z-index: -10;
+    opacity: 0.1;
+  }
+}

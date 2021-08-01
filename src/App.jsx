@@ -14,12 +14,7 @@ import board from "./images/board-player.png";
 function App() {
   return (
     <div className="App position-relative">
-      <img
-        className="position-fixed"
-        src={board}
-        alt={board}
-        style={{ top: "20%", right: "5%", zIndex: "-10", opacity: 0.05 }}
-      />
+      <img className="image-board" src={board} alt={board} />
       <MainHeader title="Movie App" />
       <NavMenu />
       <main className="container mt-3 mt-md-5">

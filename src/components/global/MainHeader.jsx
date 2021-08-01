@@ -3,7 +3,7 @@ import popcorn from "../../images/popcorn.png";
 
 const MainHeader = ({ title }) => {
   return (
-    <div className="header text-center my-3">
+    <div className="header text-center mb-">
       <div className="d-none d-md-flex container position-relative justify-content-center align-items-center my-5 ">
         <h1>{title}</h1>
         <img
