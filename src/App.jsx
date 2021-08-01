@@ -9,7 +9,6 @@ import SearchMovies from "./pages/SearchMovies";
 //  components
 import MainHeader from "./components/global/MainHeader";
 import NavMenu from "./components/global/NavMenu";
-import { MovieProvider } from "./global/helpers/MovieContext";
 import board from "./images/board-player.png";
 
 function App() {

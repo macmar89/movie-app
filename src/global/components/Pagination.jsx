@@ -14,6 +14,7 @@ const Pagination = props => {
   //  posle do SearchMovies.jsx cislo ktorej stranky ma nacitat
   const handleClick = num => {
     setCurrentPage(num);
+    console.log(`num jeeee ${num}`);
     setMinPageNumberLimit(num - 3);
     setMaxPageNumberLimit(num + 2);
     if (num === 1 || num === 2) {
@@ -24,7 +25,8 @@ const Pagination = props => {
       setMinPageNumberLimit(pageCount - 5);
       setMaxPageNumberLimit(pageCount);
     }
-    fetchMovies(movie);
+    console.log(movie, num);
+    fetchMovies(movie, num);
   };
 
   const renderPageNumbers = numberOfPages.map(number => {

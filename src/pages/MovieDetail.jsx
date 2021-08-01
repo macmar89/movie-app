@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+import ScrollButton from "react-scroll-to-bottom";
 
 //  components
 import BasicInfo from "../components/MovieDetail/BasicInfo";
@@ -9,7 +11,6 @@ import Loading from "../global/components/Loading";
 import MoreInfo from "../components/MovieDetail/MoreInfo";
 
 //  helpers
-import { fetchOneMovie } from "../global/helpers/FetchMovieDetail";
 import { timeConvert, shorten } from "../global/helpers/Format";
 import { useLocalStorage } from "../global/helpers/useLocalStorage";
 
@@ -33,19 +34,28 @@ function MovieDetail({ match }) {
       // }
     }
   };
-
   //  skontroluje ci je film ulozeny v localStorage medzi oblubenymi
   const checkIfFavorite = () => {
     const movie = favorite.filter(movie => movie.imdbID === id);
     if (movie.length > 0) setIsFavorite(true);
   };
 
-  useEffect(() => {
+  const fetchMovieDetails = async title => {
     setIsLoading(true);
-    fetchOneMovie(id, setDetails);
-    checkIfFavorite();
+    await axios
+      .get(`http://www.omdbapi.com/?apikey=48fdc589&i=${title}&plot=full`)
+      .then(res => {
+        setDetails(res.data);
+        checkIfFavorite();
+      })
+      .catch(err => console.log(err));
+
     setIsLoading(false);
-  }, [id, isFavorite]);
+  };
+
+  useEffect(() => {
+    fetchMovieDetails(id);
+  }, [id]);
 
   if (isLoading) return <Loading />;
 
@@ -54,7 +64,7 @@ function MovieDetail({ match }) {
       <header className="row py-4 px-1 shadow-lg rounded">
         <main className="col-12 col-md-8 d-flex flex-column ">
           <h2 className="text-uppercase text-center text-md-start color">
-            {shorten(details.Title, 40)}
+            {shorten(details.Title, 35)}
           </h2>
           <div className="d-flex justify-content-center justify-content-md-start">
             <span>{details.Year}</span>&nbsp;&ndash;&nbsp;
@@ -96,11 +106,13 @@ function MovieDetail({ match }) {
       </header>
       <BasicInfo data={details} />
       <div className="text-center my-4">
-        <Button
-          className="btn-success"
-          click={() => setMoreDetails(!moreDetails)}
-          label={"Show More Details"}
-        />
+        <ScrollButton>
+          <Button
+            className="btn-success"
+            click={() => setMoreDetails(!moreDetails)}
+            label={"More..."}
+          />
+        </ScrollButton>
       </div>
       {moreDetails ? <MoreInfo data={details} /> : null}
     </div>

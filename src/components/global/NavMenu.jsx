@@ -2,7 +2,6 @@ import React from "react";
 import { Nav } from "react-bootstrap";
 import { Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import SearchForm from "../SearchMovies/SearchForm";
 
 const NavMenu = () => {
   return (

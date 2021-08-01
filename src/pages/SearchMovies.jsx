@@ -2,10 +2,11 @@ import { useState } from "react";
 
 import axios from "axios";
 
+//  components
 import Error from "../global/components/Error";
 import Header from "../global/components/Header";
 import Loading from "../global/components/Loading";
-import MoviesTable from "../components/SearchMovies/MoviesTable";
+import MovieList from "../components/SearchMovies/MovieList";
 import Pagination from "../global/components/Pagination";
 import SearchForm from "../components/SearchMovies/SearchForm";
 
@@ -17,31 +18,21 @@ const MovieSearch = () => {
   const [movies, setMovies] = useState();
 
   //  stiahne data z db
-  const handleSubmit = async movie => {
+  const fetchMovies = async (movie, page) => {
     setError(false);
     setIsLoading(true);
     setMovie(movie);
     await axios
-      .get(
-        `http://www.omdbapi.com/?apikey=48fdc589&s=${movie}&page=${currentPage}`
-      )
+      .get(`http://www.omdbapi.com/?apikey=48fdc589&s=${movie}&page=${page}`)
       .then(res => {
-        console.log(res);
-        console.log(res.data.Response);
-        console.log(!res.data.Response);
-
         if (res.data.Response === "False") {
-          console.log("tu nemam");
-
           setError(true);
           return;
         }
-        console.log("uz som za mojou hladanou podmienkou");
         if (res.data.Response) {
-          console.log(res.data.Response);
           setMovies(res.data);
         }
-        console.log(res.data);
+        setCurrentPage(1);
       })
       .catch(err => console.log(err));
     console.log(
@@ -53,13 +44,14 @@ const MovieSearch = () => {
   return (
     <div className>
       <Header title="Search" />
-      <SearchForm setMovies={handleSubmit} />
+      {movie}
+      <SearchForm fetch={fetchMovies} />
       {!isLoading ? (
         <div>
-          <MoviesTable movies={movies} />
+          <MovieList movies={movies} />
           {movies && Math.ceil(movies.totalResults / 10) > 1 && (
             <Pagination
-              fetchMovies={handleSubmit}
+              fetchMovies={fetchMovies}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
               movie={movie}

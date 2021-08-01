@@ -1,7 +1,10 @@
-import Button from "../../global/components/Button";
 import React from "react";
 import { NavLink } from "react-router-dom";
+
+//  helpers
 import { shorten } from "../../global/helpers/Format";
+
+//  image
 import popcorn from "../../images/popcorn.png";
 
 const MovieCard = ({ data }) => {
