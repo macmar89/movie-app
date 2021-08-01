@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 //  components
+import EmptyList from "../components/FavoritesMovies/EmptyList";
 import FavoriteStarFull from "../global/components/FavoriteStarFull";
 import Header from "../global/components/Header";
 import MovieCard from "../components/SearchMovies/MovieCard";
@@ -52,6 +53,7 @@ const FavoriteMovies = () => {
   return (
     <div>
       <Header title="Favorites Movies" />
+      {favorites.length === 0 ? <EmptyList /> : null}
       <div className="row">
         {currentMovies.map(movie => (
           <div key={movie.imdbID} className="col-12 col-md-6 position-relative">
