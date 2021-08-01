@@ -9,7 +9,7 @@ const FavoriteStarFull = props => {
       data-bs-toggle="tooltip"
       data-bs-placement="right"
       title="Add/remove from favorites"
-      className={className}
+      className={`text-warning ${className}`}
       onClick={onClick}
       style={style}
     ></BsStarFill>

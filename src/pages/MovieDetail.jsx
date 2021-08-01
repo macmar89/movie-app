@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ScrollButton from "react-scroll-to-bottom";
 
 //  components
 import BasicInfo from "../components/MovieDetail/BasicInfo";
@@ -63,12 +62,12 @@ function MovieDetail({ match }) {
     <div>
       <header className="row py-4 px-1 shadow-lg rounded">
         <main className="col-12 col-md-8 d-flex flex-column ">
-          <h2 className="text-uppercase text-center text-md-start color">
+          <h2 className="text-uppercase text-center text-md-start">
             {shorten(details.Title, 35)}
           </h2>
           <div className="d-flex justify-content-center justify-content-md-start">
-            <span>{details.Year}</span>&nbsp;&ndash;&nbsp;
-            <span>{timeConvert(details.Runtime)}</span>
+            <small>{details.Year}</small>&nbsp;&ndash;&nbsp;
+            <small>{timeConvert(details.Runtime)}</small>
           </div>
         </main>
         <aside className="col-12 col-md-4 d-flex flex-row-reverse justify-content-center align-items-center">
@@ -79,40 +78,38 @@ function MovieDetail({ match }) {
             {isFavorite ? (
               <FavoriteStarFull
                 onClick={addRemoveFromFavorite}
-                style={{ color: "yellow", fontSize: 40 }}
+                style={{ fontSize: "2rem", cursor: "pointer" }}
               />
             ) : (
               <FavoriteStar
                 onClick={addRemoveFromFavorite}
-                style={{ color: "yellow", fontSize: 40 }}
+                style={{ fontSize: "2rem", cursor: "pointer" }}
               />
             )}
           </div>
-          <div className="my-2 mx-3 d-flex flex-column ">
+          <div className="my-2 mx-3 d-flex flex-column  ">
             <span>IMDb Rating </span>
-            <span className="px-2 py-1 mt-2 text-center border border-1 rounded-pill">
+            <strong className="px-2 py-1 mt-2 text-center border border-1 rounded-pill text-warning border-warning">
               {details.imdbRating === "N/A"
                 ? "N/A"
                 : `${details.imdbRating} / 10`}
-            </span>
+            </strong>
           </div>
           <div className="my-2 mx-3 d-flex flex-column items-align-center">
             <span>Metascore </span>
-            <span className="px-2 py-1 mt-2 text-center border border-1 rounded-pill">
+            <strong className="px-2 py-1 mt-2 text-center border border-1 rounded-pill text-warning border-warning">
               {details.Metascore}
-            </span>
+            </strong>
           </div>
         </aside>
       </header>
       <BasicInfo data={details} />
       <div className="text-center my-4">
-        <ScrollButton>
-          <Button
-            className="btn-success"
-            click={() => setMoreDetails(!moreDetails)}
-            label={"More..."}
-          />
-        </ScrollButton>
+        <Button
+          className="btn-success"
+          click={() => setMoreDetails(!moreDetails)}
+          label={"More Info"}
+        />
       </div>
       {moreDetails ? <MoreInfo data={details} /> : null}
     </div>

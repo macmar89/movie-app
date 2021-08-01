@@ -53,10 +53,10 @@ const FavoriteMovies = () => {
                 className="position-absolute"
                 style={{
                   fontSize: "2rem",
-                  color: "yellow",
                   zIndex: "50",
                   top: "2rem",
                   right: "3rem",
+                  cursor: "pointer",
                 }}
               />
             </aside>

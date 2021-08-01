@@ -22,9 +22,12 @@ const MovieCard = ({ data }) => {
         <h5 className="py-2 text-center" style={{ opacity: 1 }}>
           {shorten(data.Title, 50)}
         </h5>
-        <div className="btn btn-outline-success">
-          <NavLink className="" to={`/movie/${data.imdbID}`}>
-            Show More
+        <div className="d-flex justify-content-center">
+          <NavLink
+            className="bg-secondary px-5 py-2  rounded"
+            to={`/movie/${data.imdbID}`}
+          >
+            <strong className="">Movie Details</strong>
           </NavLink>
         </div>
       </div>
