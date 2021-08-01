@@ -32,7 +32,7 @@ const MovieSearch = () => {
         if (res.data.Response) {
           setMovies(res.data);
         }
-        setCurrentPage(1);
+        setCurrentPage(page);
       })
       .catch(err => console.log(err));
     console.log(
