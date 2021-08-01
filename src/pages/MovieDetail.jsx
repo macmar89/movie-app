@@ -1,21 +1,25 @@
-import { fetchOneMovie } from "../global/helpers/FetchMovieDetail";
 import { useState, useEffect } from "react";
 
-//  helpers
-import { timeConvert, shorten } from "../global/helpers/Format";
-import { useLocalStorage } from "../global/helpers/useLocalStorage";
-
 //  components
+import BasicInfo from "../components/MovieDetail/BasicInfo";
 import Button from "../global/components/Button";
 import FavoriteStar from "../global/components/FavoriteStar";
 import FavoriteStarFull from "../global/components/FavoriteStarFull";
+import Loading from "../global/components/Loading";
+import MoreInfo from "../components/MovieDetail/MoreInfo";
+
+//  helpers
+import { fetchOneMovie } from "../global/helpers/FetchMovieDetail";
+import { timeConvert, shorten } from "../global/helpers/Format";
+import { useLocalStorage } from "../global/helpers/useLocalStorage";
 
 function MovieDetail({ match }) {
   const id = match.params.id;
   const [details, setDetails] = useState([]);
+  const [favorite, setFavorite] = useLocalStorage("favorites", []);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [favorite, setFavorite] = useLocalStorage("favorites", []);
+  const [moreDetails, setMoreDetails] = useState(false);
 
   const addRemoveFromFavorite = () => {
     setIsFavorite(!isFavorite);
@@ -43,17 +47,17 @@ function MovieDetail({ match }) {
     setIsLoading(false);
   }, [id, isFavorite]);
 
-  if (isLoading) return <div>Is loading...</div>;
+  if (isLoading) return <Loading />;
 
   return (
     <div>
       <header className="row py-4 px-1 shadow-lg rounded">
         <main className="col-12 col-md-8 d-flex flex-column ">
-          <h2 className="text-uppercase text-center text-md-start">
-            {shorten(details.Title)}
+          <h2 className="text-uppercase text-center text-md-start color">
+            {shorten(details.Title, 40)}
           </h2>
           <div className="d-flex justify-content-center justify-content-md-start">
-            <span>{details.Released}</span>&nbsp;&ndash;&nbsp;
+            <span>{details.Year}</span>&nbsp;&ndash;&nbsp;
             <span>{timeConvert(details.Runtime)}</span>
           </div>
         </main>
@@ -90,48 +94,15 @@ function MovieDetail({ match }) {
           </div>
         </aside>
       </header>
-      <div className="row  py-4 px-1">
-        <div className="col-12 col-md-8">
-          <table className="table ">
-            <tbody>
-              <tr>
-                <td>Title</td>
-                <th>{details.Title}</th>
-              </tr>
-              <tr>
-                <td>Genre</td>
-                <th>{details.Genre}</th>
-              </tr>
-              <tr>
-                <td>Country</td>
-                <th>{details.Country}</th>
-              </tr>
-              <tr>
-                <td>Director</td>
-                <th>{details.Director}</th>
-              </tr>
-              <tr>
-                <td>Writer</td>
-                <th>{details.Writer}</th>
-              </tr>
-              <tr>
-                <td>Actors</td>
-                <th>{details.Actors}</th>
-              </tr>
-            </tbody>
-          </table>
-          <p className="px-3 py-1 overflow-auto">{details.Plot}</p>
-        </div>
-        <div className="col-12 order-first order-md-last col-md-4 mb-4 mb-md-0 d-flex justify-content-center">
-          <img src={details.Poster} alt={`${details.Poster} poster`} />
-        </div>
-      </div>
+      <BasicInfo data={details} />
       <div className="text-center my-4">
         <Button
+          className="btn-success"
+          click={() => setMoreDetails(!moreDetails)}
           label={"Show More Details"}
-          click={() => console.log(details)}
         />
       </div>
+      {moreDetails ? <MoreInfo data={details} /> : null}
     </div>
   );
 }

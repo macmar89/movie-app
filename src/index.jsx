@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "./styles/_bootswatch.scss";
+
+import App from "./App";
+
+import "./index.scss";
 import "./styles/bootstrap.min.css";
 import "./styles/_variables.scss";
 

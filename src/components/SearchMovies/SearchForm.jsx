@@ -1,5 +1,8 @@
 import React, { useState, useRef } from "react";
 
+//  components
+import Button from "../../global/components/Button";
+
 const SearchForm = ({ setMovies }) => {
   const searchInput = useRef(null);
   const [movie, setMovie] = useState("");
@@ -25,12 +28,10 @@ const SearchForm = ({ setMovies }) => {
           placeholder="search for movie"
         />
       </div>
-      <button
-        className="d-none d-md-block col-md-4 mt-md-0 btn btn-outline-success btn-block"
-        type="submit"
-      >
-        Search
-      </button>
+      <Button
+        label={"Search"}
+        className="col-11 col-md-4 mx-auto mt-2 mt-md-0 btn-outline-success"
+      />
     </form>
   );
 };

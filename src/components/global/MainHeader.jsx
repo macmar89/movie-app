@@ -1,6 +1,5 @@
 import React from "react";
 import popcorn from "../../images/popcorn.png";
-import film from "../../images/film-frame.png";
 
 const MainHeader = ({ title }) => {
   return (

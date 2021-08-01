@@ -19,7 +19,7 @@ function App() {
         className="position-fixed"
         src={board}
         alt={board}
-        style={{ top: "20%", right: "5%", zIndex: "-10", opacity: 0.35 }}
+        style={{ top: "20%", right: "5%", zIndex: "-10", opacity: 0.05 }}
       />
       <MainHeader title="Movie App" />
       <NavMenu />
