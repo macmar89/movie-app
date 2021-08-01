@@ -5,7 +5,7 @@ const MainHeader = ({ title }) => {
   return (
     <div className="header text-center mb-">
       <div className="d-none d-md-flex container position-relative justify-content-center align-items-center my-5 ">
-        <h1>{title}</h1>
+        <h1 className="head-title">{title}</h1>
         <img
           className="position-absolute left-image"
           src={popcorn}

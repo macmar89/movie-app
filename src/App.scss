@@ -49,43 +49,6 @@
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
-  .image-board {
-    position: fixed;
-    height: 80%;
-    top: 40%;
-    left: 0%;
-    z-index: -10;
-    opacity: 0.1;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .image-board {
-    position: fixed;
-    height: 80%;
-    top: 40%;
-    left: 0%;
-    z-index: -10;
-    opacity: 0.1;
-  }
-  .header {
-    h1 {
-      font-size: 2.8rem;
-    }
-    img {
-      width: 7rem;
-      height: 7rem;
-    }
-    .left-image {
-      left: 0;
-    }
-    .right-image {
-      right: 0;
-    }
-  }
-}
-
 @media only screen and (max-width: 1024px) {
   .header {
     h1 {
@@ -101,5 +64,38 @@
     .right-image {
       right: 4%;
     }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .image-board {
+    height: 80%;
+    top: 40%;
+    left: 0%;
+  }
+  .header {
+    .head-title {
+      font-size: 3.8rem;
+    }
+    img {
+      width: 7rem;
+      height: 7rem;
+    }
+    .left-image {
+      left: 0;
+    }
+    .right-image {
+      right: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .image-board {
+    position: fixed;
+    height: 80%;
+    top: 40%;
+    left: 0%;
+    z-index: -10;
+    opacity: 0.1;
   }
 }
