@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 
 //  components
-import EmptyList from "../components/FavoritesMovies/EmptyList";
+import EmptyList from "../layout/FavoritesMovies/EmptyList";
 import FavoriteStarFull from "../global/components/FavoriteStarFull";
 import Header from "../global/components/Header";
-import MovieCard from "../components/SearchMovies/MovieCard";
+import MovieCard from "../layout/SearchMovies/MovieCard";
 import Pagination from "../global/components/Pagination";
 
 //  helpers
 import { useLocalStorage } from "../global/helpers/useLocalStorage";
 
 const FavoriteMovies = () => {
-  // const localFavorites = JSON.parse(localStorage.getItem("favorite"));
-
   const [favorites, setFavorites] = useLocalStorage(
     "favorites",
     JSON.parse(localStorage.getItem("favorite")) !== null
@@ -21,10 +19,6 @@ const FavoriteMovies = () => {
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
-
-  // if (localFavorites !== null) {
-  //   setFavorites(localFavorites);
-  // }
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;

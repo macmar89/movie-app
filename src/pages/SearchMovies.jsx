@@ -6,9 +6,9 @@ import axios from "axios";
 import Error from "../global/components/Error";
 import Header from "../global/components/Header";
 import Loading from "../global/components/Loading";
-import MovieList from "../components/SearchMovies/MovieList";
+import MovieList from "../layout/SearchMovies/MovieList";
 import Pagination from "../global/components/Pagination";
-import SearchForm from "../components/SearchMovies/SearchForm";
+import SearchForm from "../layout/SearchMovies/SearchForm";
 
 const MovieSearch = () => {
   const [isLoading, setIsLoading] = useState(false);

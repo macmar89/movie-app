@@ -34,7 +34,9 @@ const Pagination = props => {
           key={number}
           id={number}
           onClick={() => handleClick(number)}
-          className={`page-item ${currentPage === number ? "active" : ""}`}
+          className={`page-item cursor-pointer ${
+            currentPage === number ? "active" : ""
+          }`}
         >
           <span className="page-link ">{number}</span>
         </li>
@@ -48,7 +50,9 @@ const Pagination = props => {
     <div className="d-flex mb-4 justify-content-center justify-content-lg-end">
       <nav className="pagination ">
         <li
-          className={`page-item  ${currentPage === 1 ? "disabled" : ""}`}
+          className={`page-item cursor-pointer  ${
+            currentPage === 1 ? "disabled" : ""
+          }`}
           onClick={() => {
             if (currentPage > 1) handleClick(currentPage - 1);
           }}
@@ -57,7 +61,9 @@ const Pagination = props => {
         </li>
         {renderPageNumbers}
         <li
-          className={`page-item ${currentPage === pageCount ? "disabled" : ""}`}
+          className={`page-item cursor-pointer ${
+            currentPage === pageCount ? "disabled" : ""
+          }`}
           onClick={() => {
             if (currentPage < pageCount) handleClick(currentPage + 1);
           }}

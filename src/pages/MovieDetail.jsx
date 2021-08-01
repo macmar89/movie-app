@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 //  components
-import BasicInfo from "../components/MovieDetail/BasicInfo";
+import BasicInfo from "../layout/MovieDetail/BasicInfo";
 import Button from "../global/components/Button";
 import FavoriteStar from "../global/components/FavoriteStar";
 import FavoriteStarFull from "../global/components/FavoriteStarFull";
 import Loading from "../global/components/Loading";
-import MoreInfo from "../components/MovieDetail/MoreInfo";
+import MoreInfo from "../layout/MovieDetail/MoreInfo";
 
 //  helpers
 import { timeConvert, shorten } from "../global/helpers/Format";
