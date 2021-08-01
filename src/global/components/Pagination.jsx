@@ -4,9 +4,8 @@ const Pagination = props => {
   const { fetchMovies, currentPage, setCurrentPage, pageCount, movie } = props;
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
-  const [isTruth, setIsTruth] = useState(true);
 
-  //  spravi mi pole cisel od 1 po pocet stranok
+  //  xpravi mi pole cisel od 1 po pocet stranok
   const numberOfPages = [];
   for (let i = 1; i <= pageCount; i++) {
     numberOfPages.push(i);
@@ -93,7 +92,6 @@ const Pagination = props => {
     if (currentPage >= 3 && currentPage < pageCount - 2) {
       setMinPageNumberLimit(currentPage - 2);
       setMaxPageNumberLimit(currentPage + 3);
-      setIsTruth(!isTruth);
     }
 
     if (currentPage + 1 === pageCount || currentPage + 1 >= pageCount - 1) {
@@ -134,10 +132,6 @@ const Pagination = props => {
       >
         tuk
       </button>
-      {isTruth === false ? <p>false</p> : <p>true</p>}
-      <div>
-        {minPageNumberLimit} {maxPageNumberLimit}
-      </div>
     </div>
   );
 };

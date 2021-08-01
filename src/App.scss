@@ -7,6 +7,9 @@
     width: 9rem;
     height: 9rem;
   }
+  .left-image {
+    left: 10%;
+  }
 }
 .movie-card {
   background-color: pink;
@@ -51,5 +54,32 @@
     left: 0%;
     z-index: -10;
     opacity: 0.1;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .image-board {
+    position: fixed;
+    height: 80%;
+    top: 40%;
+    left: 0%;
+    z-index: -10;
+    opacity: 0.1;
+  }
+  .header {
+    h1 {
+      font-size: 3.8rem;
+    }
+    img {
+      width: 7rem;
+      height: 7rem;
+      opacity: 0.6;
+    }
+    .left-image {
+      left: 0;
+    }
+    .right-image {
+      right: 0;
+    }
   }
 }

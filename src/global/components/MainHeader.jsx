@@ -7,14 +7,12 @@ const MainHeader = ({ title }) => {
       <div className="d-none d-md-flex container position-relative justify-content-center align-items-center my-5 ">
         <h1>{title}</h1>
         <img
-          className="position-absolute "
-          style={{ left: 50 }}
+          className="position-absolute left-image"
           src={popcorn}
           alt="popcorn"
         />
         <img
-          className="position-absolute "
-          style={{ right: 50 }}
+          className="position-absolute right-image"
           src={popcorn}
           alt="popcorn"
         />
