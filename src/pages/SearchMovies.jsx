@@ -36,7 +36,7 @@ const MovieSearch = () => {
       })
       .catch(err => console.log(err));
     console.log(
-      `http://www.omdbapi.com/?apikey=48fdc589&s=${movie}&page=${currentPage}`
+      `http://www.omdbapi.com/?apikey=48fdc589&s=${movie}&page=${page}`
     );
     setIsLoading(false);
   };
