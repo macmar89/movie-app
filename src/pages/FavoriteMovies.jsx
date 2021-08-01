@@ -5,6 +5,7 @@ import { useLocalStorage } from "../global/helpers/useLocalStorage";
 import FavoriteStarFull from "../global/components/FavoriteStarFull";
 import MovieCard from "../components/SearchMovies/MovieCard";
 import Pagination from "../global/components/Pagination";
+import Header from "../global/components/Header";
 
 const FavoriteMovies = () => {
   const [favorites, setFavorites] = useLocalStorage(
@@ -37,7 +38,7 @@ const FavoriteMovies = () => {
 
   return (
     <div>
-      <h2 className="my-2 text-center">Favorites Movies</h2>
+      <Header title="Favorites Movies" />
       <div className="row">
         {currentMovies.map(movie => (
           <div className="col-12 col-md-6 position-relative">

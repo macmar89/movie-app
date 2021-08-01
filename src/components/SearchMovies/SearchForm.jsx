@@ -17,8 +17,8 @@ const SearchForm = ({ setMovies }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="row ">
-      <div className="col-12 col-md-8">
+    <form onSubmit={handleSubmit} className="row">
+      <div className="col-12 col-md-8 ">
         <input
           className="form-control"
           ref={searchInput}
@@ -26,12 +26,15 @@ const SearchForm = ({ setMovies }) => {
           value={movie}
           type="text"
           placeholder="search for movie"
+          autoFocus
         />
       </div>
-      <Button
-        label={"Search"}
-        className="col-11 col-md-4 mx-auto mt-2 mt-md-0 btn-outline-success"
-      />
+      <div className="col-12 col-md-4 mx-auto mt-2 mt-md-0 ">
+        <Button
+          label={"Search"}
+          className="btn-outline-success btn-block col-12"
+        />
+      </div>
     </form>
   );
 };

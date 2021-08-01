@@ -1,19 +1,24 @@
 import { useState } from "react";
-import Pagination from "../global/components/Pagination";
-import MoviesTable from "../components/SearchMovies/MoviesTable";
-import SearchForm from "../components/SearchMovies/SearchForm";
-import Loading from "../global/components/Loading";
 
 import axios from "axios";
 
+import Error from "../global/components/Error";
+import Header from "../global/components/Header";
+import Loading from "../global/components/Loading";
+import MoviesTable from "../components/SearchMovies/MoviesTable";
+import Pagination from "../global/components/Pagination";
+import SearchForm from "../components/SearchMovies/SearchForm";
+
 const MovieSearch = () => {
-  const [movie, setMovie] = useState("");
-  const [movies, setMovies] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [error, setError] = useState(false);
+  const [movie, setMovie] = useState("");
+  const [movies, setMovies] = useState();
 
   //  stiahne data z db
   const handleSubmit = async movie => {
+    setError(false);
     setIsLoading(true);
     setMovie(movie);
     await axios
@@ -21,20 +26,33 @@ const MovieSearch = () => {
         `http://www.omdbapi.com/?apikey=48fdc589&s=${movie}&page=${currentPage}`
       )
       .then(res => {
+        console.log(res);
+        console.log(res.data.Response);
+        console.log(!res.data.Response);
+
+        if (res.data.Response === "False") {
+          console.log("tu nemam");
+
+          setError(true);
+          return;
+        }
+        console.log("uz som za mojou hladanou podmienkou");
         if (res.data.Response) {
+          console.log(res.data.Response);
           setMovies(res.data);
         }
-        setIsLoading(false);
         console.log(res.data);
       })
       .catch(err => console.log(err));
     console.log(
       `http://www.omdbapi.com/?apikey=48fdc589&s=${movie}&page=${currentPage}`
     );
+    setIsLoading(false);
   };
 
   return (
-    <div>
+    <div className>
+      <Header title="Search" />
       <SearchForm setMovies={handleSubmit} />
       {!isLoading ? (
         <div>
@@ -52,6 +70,7 @@ const MovieSearch = () => {
       ) : (
         <Loading />
       )}
+      {error ? <Error /> : null}
     </div>
   );
 };
