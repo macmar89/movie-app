@@ -1,4 +1,3 @@
-import React from "react";
 import suprised from "../../images/suprised.png";
 
 const EmptyList = () => {

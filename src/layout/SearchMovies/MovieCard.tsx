@@ -7,7 +7,8 @@ import { shorten } from "../../global/helpers/Format";
 //  image
 import popcorn from "../../images/popcorn.png";
 
-const MovieCard = ({ data }) => {
+const MovieCard = ({ data }: { data: any }) => {
+  console.log(data);
   return (
     <div className="card mb-4 pt-3" style={{ opacity: "0.90" }}>
       <img

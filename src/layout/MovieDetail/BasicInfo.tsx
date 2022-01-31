@@ -1,6 +1,6 @@
 import React from "react";
 
-const BasicInfo = ({ data }) => {
+const BasicInfo = ({ data }: { data: any }) => {
   return (
     <div className="row  py-4  d-flex justify-content-center">
       <div className="col-12 col-md-6 col-lg-7">

@@ -1,4 +1,4 @@
-const timeConvert = n => {
+const timeConvert = (n: string) => {
   var num = parseInt(n);
   var hours = num / 60;
   var rhours = Math.floor(hours);

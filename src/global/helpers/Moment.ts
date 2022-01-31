@@ -20,6 +20,6 @@ moment.updateLocale("en", {
   },
 });
 
-export const formatDate = date => {
+export const formatDate = (date: Date) => {
   return moment(date).startOf("minute").fromNow();
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-const MoreInfo = ({ data }) => {
+const MoreInfo = ({ data }: { data: any }) => {
   return (
     <div>
       <table className="table">

@@ -1,6 +1,12 @@
 import React from "react";
 
-const Button = ({ label, click, className }) => {
+interface ButtonProps {
+  label: string;
+  click?: any;
+  className?: string;
+}
+
+const Button = ({ label, click, className }: ButtonProps) => {
   return (
     <button onClick={click} className={`btn ${className}`}>
       {label}

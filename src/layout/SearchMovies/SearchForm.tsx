@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 
 //  components
 import Button from "../../global/components/Button";
 
-const SearchForm = ({ fetch }) => {
+const SearchForm = ({ fetch }: { fetch: any }) => {
   const [movie, setMovie] = useState("");
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetch(movie, 1);
     setMovie("");

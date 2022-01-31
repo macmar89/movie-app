@@ -1,9 +1,7 @@
-import React from "react";
 import { BsStarFill } from "react-icons/bs";
+import { Icon } from "../types/Icon";
 
-const FavoriteStarFull = props => {
-  const { className, onClick, style } = props;
-
+const FavoriteStarFull = ({ className, onClick, style }: Icon) => {
   return (
     <BsStarFill
       data-bs-toggle="tooltip"

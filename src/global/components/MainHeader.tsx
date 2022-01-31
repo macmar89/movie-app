@@ -1,7 +1,7 @@
 import React from "react";
 import popcorn from "../../images/popcorn.png";
 
-const MainHeader = ({ title }) => {
+const MainHeader = ({ title }: { title: string }) => {
   return (
     <div className="header text-center mb-">
       <div className="d-none d-md-flex container position-relative justify-content-center align-items-center my-5 ">

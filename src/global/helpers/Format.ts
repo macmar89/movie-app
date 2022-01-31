@@ -1,6 +1,6 @@
-import _ from "loadsh";
+import _ from "lodash";
 
-export const timeConvert = n => {
+export const timeConvert = (n: string) => {
   var num = parseInt(n);
   var hours = num / 60;
   var rhours = Math.floor(hours);
@@ -10,8 +10,6 @@ export const timeConvert = n => {
 };
 
 //  skrati text(string) na zadany pocet znakov a doplni 3 bodky na koncy, default hodnota 80
-export const shorten = (str, len = 30) => {
+export const shorten = (str: string, len = 30) => {
   return _.truncate(str, { length: len });
 };
-
-export const year = year => {};
